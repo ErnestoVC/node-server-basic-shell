@@ -1,6 +1,6 @@
-const { response, json } = require("express");
-const bcryptjs = require('bcryptjs')
-
+const { response  } = require("express");
+const bcryptjs = require('bcryptjs');
+const generator = require('generate-password');
 const Usuario = require("../models/usuario.models");
 const { generarJWT } = require("../helpers/generar-jwt");
 const { googleVerify } = require("../helpers/google-verify");
@@ -61,7 +61,12 @@ const googleSingIn = async(req, res = response) => {
       const data = {
         nombre,
         correo,
-        password: process.env.PASSWORD_CLIENTE,
+        password: generator.generate({
+          length: 12,
+          numbers: true,
+          symbols: true,
+          strict: true
+        }),
         img,
         google: true
       };
