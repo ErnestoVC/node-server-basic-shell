@@ -1,8 +1,8 @@
-const { response } = require("express");
-//const { isValidObjectId } = require("mongoose");
-const { ObjectId } = require("mongoose").Types;
+const { response } = require('express');
+//const { isValidObjectId } = require('mongoose');
+const { ObjectId } = require('mongoose').Types;
 
-const { Usuario, Producto, Categoria } = require("../models");
+const { Usuario, Producto, Categoria } = require('../models');
 
 
 const coleccionesAllow = [

@@ -1,13 +1,13 @@
 const { Usuario, Categoria, Role, Producto } = require('../models');
 
-const esRolValido = async (rol = "") => {
+const esRolValido = async (rol = '') => {
   const existRol = await Role.findOne({ rol });
   if (!existRol) {
     throw new Error(`El rol ${rol} no está registrado en la BD`);
   }
 };
 
-const emailExiste = async (correo = "") => {
+const emailExiste = async (correo = '') => {
   // Verificar si el correo existe
   const existeEmail = await Usuario.findOne({ correo });
   if (existeEmail) {

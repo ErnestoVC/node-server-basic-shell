@@ -1,9 +1,9 @@
-const { response  } = require("express");
+const { response  } = require('express');
 const bcryptjs = require('bcryptjs');
 const generator = require('generate-password');
-const Usuario = require("../models/usuario.models");
-const { generarJWT } = require("../helpers/generar-jwt");
-const { googleVerify } = require("../helpers/google-verify");
+const Usuario = require('../models/usuario.models');
+const { generarJWT } = require('../helpers/generar-jwt');
+const { googleVerify } = require('../helpers/google-verify');
 
 const login = async(req, res = response) => {
   const { correo, password } = req.body;
@@ -43,7 +43,7 @@ const login = async(req, res = response) => {
   } catch (error) {
       console.log(error);
     return res.status(500).json({
-      msg: "Hable con el administrador",
+      msg: 'Hable con el administrador',
     });
   }
 };

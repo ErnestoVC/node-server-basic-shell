@@ -1,21 +1,21 @@
 const {
   response
-} = require("express");
+} = require('express');
 const cloudinary = require('cloudinary').v2;
 cloudinary.config(process.env.CLOUDINARY_URL);
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 const {
   subirArchivo
-} = require("../helpers/subir-archivo");
+} = require('../helpers/subir-archivo');
 const {
   Usuario,
   Producto
-} = require("../models");
+} = require('../models');
 
 const cargarArchivo = async (req, res = response) => {
   try {
-    const nombre = await subirArchivo(req.files, undefined, "imgs");
+    const nombre = await subirArchivo(req.files, undefined, 'imgs');
     res.json({
       nombre,
     });
@@ -35,7 +35,7 @@ const actualizarImagen = async (req, res = response) => {
   let modelo;
 
   switch (coleccion) {
-    case "usuarios":
+    case 'usuarios':
       modelo = await Usuario.findById(id);
       if (!modelo) {
         return res.status(400).json({
@@ -45,7 +45,7 @@ const actualizarImagen = async (req, res = response) => {
 
       break;
 
-    case "productos":
+    case 'productos':
       modelo = await Producto.findById(id);
       if (!modelo) {
         return res.status(400).json({
@@ -57,7 +57,7 @@ const actualizarImagen = async (req, res = response) => {
 
     default:
       return res.status(500).json({
-        msg: "Se me olvidó validar esto",
+        msg: 'Se me olvidó validar esto',
       });
   }
 
@@ -66,7 +66,7 @@ const actualizarImagen = async (req, res = response) => {
     //Hay que borrar la imagene del servidor
     const pathImagenBorrar = path.join(
       __dirname,
-      "../uploads",
+      '../uploads',
       coleccion,
       modelo.img
     );
@@ -138,7 +138,7 @@ const actualizarImagenCloudinary = async (req, res = response) => {
   let modelo;
 
   switch (coleccion) {
-    case "usuarios":
+    case 'usuarios':
       modelo = await Usuario.findById(id);
       if (!modelo) {
         return res.status(400).json({
@@ -148,7 +148,7 @@ const actualizarImagenCloudinary = async (req, res = response) => {
 
       break;
 
-    case "productos":
+    case 'productos':
       modelo = await Producto.findById(id);
       if (!modelo) {
         return res.status(400).json({
@@ -160,7 +160,7 @@ const actualizarImagenCloudinary = async (req, res = response) => {
 
     default:
       return res.status(500).json({
-        msg: "Se me olvidó validar esto",
+        msg: 'Se me olvidó validar esto',
       });
   }
 

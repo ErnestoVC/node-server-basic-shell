@@ -1,7 +1,7 @@
-const { response, request } = require("express");
-const bcryptjs = require("bcryptjs");
+const { response, request } = require('express');
+const bcryptjs = require('bcryptjs');
 
-const Usuario = require("../models/usuario.models");
+const Usuario = require('../models/usuario.models');
 
 const usuariosGet = async (req, res = response) => {
   const { limite = 5, desde = 0 } = req.query;
@@ -32,7 +32,7 @@ const usuariosPut = async (req, res = response) => {
   const usuario = await Usuario.findByIdAndUpdate(id, resto);
 
   res.json({
-    msg: "Put API - Controlador",
+    msg: 'Put API - Controlador',
     usuario,
   });
 };

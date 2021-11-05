@@ -1,8 +1,8 @@
 
-const { v4: uuidv4 } = require("uuid");
-const path = require("path");
+const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 
-const subirArchivo = (files, extenValid = ["png", "jpg", "jpeg", "gif"], carpeta = '') => {
+const subirArchivo = (files, extenValid = ['png', 'jpg', 'jpeg', 'gif'], carpeta = '') => {
 
     return new Promise((resolve, reject) => {
 
@@ -10,7 +10,7 @@ const subirArchivo = (files, extenValid = ["png", "jpg", "jpeg", "gif"], carpeta
                 archivo
             } = files;
 
-            const nombreCortado = archivo.name.split(".");
+            const nombreCortado = archivo.name.split('.');
             const extension = nombreCortado[nombreCortado.length - 1];
 
 
@@ -18,9 +18,9 @@ const subirArchivo = (files, extenValid = ["png", "jpg", "jpeg", "gif"], carpeta
                 return reject(`La extensión ${extension} no es permitida ${extenValid}`);
             }
 
-            const nombreTemp = uuidv4() + "." + extension;
+            const nombreTemp = uuidv4() + '.' + extension;
 
-            const uploadPath = path.join(__dirname, "../uploads/", carpeta, nombreTemp);
+            const uploadPath = path.join(__dirname, '../uploads/', carpeta, nombreTemp);
 
             archivo.mv(uploadPath, function (err) {
                 if (err) {
